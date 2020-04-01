@@ -6,7 +6,8 @@ import java.awt.*;
  * 创建坦克类
  */
 public class Tank {
-    private int x,y;//坦克大小
+    private int x,y;//坦克所在位置
+    private static int WIDTH =50 , HEIGHT =50;//坦克大小
     private Dir dir = Dir.DOWN;//坦克移动的方向
     private static final int SPEED = 5;//坦克的速度
     private boolean moving = Boolean.FALSE;//移动
@@ -22,7 +23,11 @@ public class Tank {
      * @param graphics
      */
     public void paint(Graphics graphics) {
-        graphics.fillRect(x,y,50,50);
+        //画出坦克所在位置及大小
+        Color color = graphics.getColor();
+        graphics.setColor(Color.YELLOW);//设置坦克颜色
+        graphics.fillRect(x,y,WIDTH,HEIGHT);//设置坦克所在位置及大小
+        graphics.setColor(color);
        this.move();//移动坦克
     }
 

@@ -16,9 +16,10 @@ public class TankFrame extends Frame {
     Tank myTank = new Tank(200,200,Dir.DOWN);
     //创建子弹
     Bullet bullet = new Bullet(300,300,Dir.DOWN);
+    static final int GAME_WIDTH = 800, GAME_HEIGHT = 600; //游戏窗口大小
     public TankFrame() throws HeadlessException {
         this.setVisible(true);//展示窗口
-        this.setSize(800,600);//设置窗口大小
+        this.setSize(GAME_WIDTH,GAME_HEIGHT);//设置窗口大小
         this.setResizable(false);//设置窗口是否可以改变大小
         this.setTitle("坦克大战");
         //添加键盘监听事件
@@ -31,7 +32,21 @@ public class TankFrame extends Frame {
             }
         });
     }
-
+    private Image offScreenImage = null;
+    @Override
+    public void update(Graphics graphics){
+        if(offScreenImage == null){//判断如果图像为空创建一个图像
+            offScreenImage = this.createImage(GAME_WIDTH,GAME_HEIGHT);
+        }
+        //获得画板
+        Graphics graphicsOffScreen = offScreenImage.getGraphics();
+        Color color = graphicsOffScreen.getColor();//获得当前画板颜色
+        graphicsOffScreen.setColor(Color.BLACK);//设置画板颜色
+        graphicsOffScreen.fillRect(0,0,GAME_WIDTH,GAME_HEIGHT);//设置圆角
+        graphicsOffScreen.setColor(color);//设置回原有画板颜色
+        this.paint(graphicsOffScreen);//调用画板
+        graphics.drawImage(offScreenImage,0,0,null);//一次性写入到屏幕上
+    }
     /**
      * 画板
      * @param graphics
@@ -41,6 +56,8 @@ public class TankFrame extends Frame {
         myTank.paint(graphics);
         bullet.paint(graphics);
     }
+
+
 
     /**
      * 创建键盘监听事件

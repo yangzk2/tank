@@ -9,8 +9,8 @@ public class Bullet {
 
     private static final int SPEED = 8;
 
-    private int x,y;
-    private static int WIDTH =20 , HEIGHT =20;
+    private int x,y;//子弹发出的位置
+    private static int WIDTH =20 , HEIGHT =20;//子弹大小
     //方向
     private Dir dir;
 
@@ -27,7 +27,8 @@ public class Bullet {
     public void paint(Graphics graphics){
         Color color = graphics.getColor();
         graphics.setColor(Color.RED);//设置子弹颜色
-        graphics.fillOval(x,y,WIDTH,HEIGHT);//设置子弹大小宽高
+
+        graphics.fillOval(x,y,WIDTH,HEIGHT);//设置子弹发射位置及大小
         graphics.setColor(color);//设置子弹颜色
         //子弹移动
         this.move();
