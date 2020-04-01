@@ -12,10 +12,8 @@ import java.awt.event.WindowEvent;
  * Graphics画板：画出小方块
  */
 public class TankFrame extends Frame {
-    int x = 200, y = 200;
-    Dir dir = Dir.DOWN;//坦克移动的方向
-   private static final int SPEED = 10;//坦克的速度
 
+    Tank myTank = new Tank(200,200,Dir.DOWN);
     public TankFrame() throws HeadlessException {
         this.setVisible(true);//展示窗口
         this.setSize(800,600);//设置窗口大小
@@ -34,21 +32,7 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics graphics){
-        graphics.fillRect(x,y,50,50);
-        switch (dir){
-            case LEFT:
-                x-=SPEED;
-                break;
-            case UP:
-                y-=SPEED;
-                break;
-            case RIGHT:
-                x+=SPEED;
-                break;
-            case DOWN:
-                y+=SPEED;
-                break;
-        }
+        myTank.paint(graphics);
     }
 
     /**
@@ -84,6 +68,7 @@ public class TankFrame extends Frame {
                default:
                    break;
            }
+            //设置坦克方向
            setMinTankDir();
 
         }
@@ -111,14 +96,18 @@ public class TankFrame extends Frame {
                 default:
                     break;
             }
+            //设置坦克方向
             setMinTankDir();
         }
 
+        /**
+         * 设定坦克方向
+         */
         private void setMinTankDir() {
-            if (bL) dir = Dir.LEFT;
-            if (bU) dir = Dir.UP;
-            if (bR) dir = Dir.RIGHT;
-            if (bD) dir = Dir.DOWN;
+            if (bL) myTank.setDir(Dir.LEFT);
+            if (bU) myTank.setDir(Dir.UP);
+            if (bR) myTank.setDir(Dir.RIGHT);
+            if (bD) myTank.setDir(Dir.DOWN);
         }
 
     }
