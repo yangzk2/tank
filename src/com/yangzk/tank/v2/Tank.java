@@ -8,7 +8,7 @@ import java.awt.*;
 public class Tank {
     private int x,y;//坦克大小
     private Dir dir = Dir.DOWN;//坦克移动的方向
-    private static final int SPEED = 10;//坦克的速度
+    private static final int SPEED = 5;//坦克的速度
     private boolean moving = Boolean.FALSE;//移动
 
     public Tank(int x, int y, Dir dir) {

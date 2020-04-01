@@ -12,8 +12,10 @@ import java.awt.event.WindowEvent;
  * Graphics画板：画出小方块
  */
 public class TankFrame extends Frame {
-
+    //创建坦克
     Tank myTank = new Tank(200,200,Dir.DOWN);
+    //创建子弹
+    Bullet bullet = new Bullet(300,300,Dir.DOWN);
     public TankFrame() throws HeadlessException {
         this.setVisible(true);//展示窗口
         this.setSize(800,600);//设置窗口大小
@@ -37,6 +39,7 @@ public class TankFrame extends Frame {
     @Override
     public void paint(Graphics graphics){
         myTank.paint(graphics);
+        bullet.paint(graphics);
     }
 
     /**
