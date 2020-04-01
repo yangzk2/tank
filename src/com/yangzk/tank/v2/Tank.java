@@ -11,11 +11,12 @@ public class Tank {
     private Dir dir = Dir.DOWN;//坦克移动的方向
     private static final int SPEED = 5;//坦克的速度
     private boolean moving = Boolean.FALSE;//移动
-
-    public Tank(int x, int y, Dir dir) {
+    private TankFrame tankFrame;//坦克窗口
+    public Tank(int x, int y, Dir dir,TankFrame tankFrame) {
         this.x = x;
         this.y = y;
         this.dir = dir;
+        this.tankFrame = tankFrame;
     }
 
     /**
@@ -59,5 +60,12 @@ public class Tank {
 
     public void setDir(Dir dir) {
         this.dir = dir;
+    }
+
+    /**
+     * 发射子弹
+     */
+    public void fire() {
+        tankFrame.bullet = new Bullet(this.x,this.y,this.dir);
     }
 }
