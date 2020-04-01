@@ -14,10 +14,14 @@ public class Bullet {
     //方向
     private Dir dir;
 
-    public Bullet(int x,int y, Dir dir){
+    private boolean live = true;
+    private TankFrame tankFrame;
+
+    public Bullet(int x,int y, Dir dir,TankFrame tankFrame){
         this.x = x;
         this.y = y;
         this.dir =dir;
+        this.tankFrame = tankFrame;
     }
 
     /**
@@ -25,6 +29,9 @@ public class Bullet {
      * @param graphics
      */
     public void paint(Graphics graphics){
+        if(!live){
+            tankFrame.bullets.remove(this);
+        }
         Color color = graphics.getColor();
         graphics.setColor(Color.RED);//设置子弹颜色
 
@@ -52,5 +59,8 @@ public class Bullet {
                 y+=SPEED;
                 break;
         }
+        if(x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) live = false;
+
+
     }
 }
