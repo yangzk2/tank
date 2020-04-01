@@ -30,6 +30,10 @@ public class TankFrame extends Frame {
         });
     }
 
+    /**
+     * 画板
+     * @param graphics
+     */
     @Override
     public void paint(Graphics graphics){
         myTank.paint(graphics);
@@ -46,7 +50,7 @@ public class TankFrame extends Frame {
         boolean bD = false;
 
         /**
-         * 键盘按下调用
+         * 键盘按下调用 移动坦克
          * @param e
          */
         @Override
@@ -74,7 +78,7 @@ public class TankFrame extends Frame {
         }
 
         /**
-         * 键盘抬起调用
+         * 键盘抬起调用 停止坦克
          * @param e
          */
         @Override
@@ -104,10 +108,14 @@ public class TankFrame extends Frame {
          * 设定坦克方向
          */
         private void setMinTankDir() {
+            if(!bL && !bU && !bR && !bD) myTank.setMoving(Boolean.FALSE);
+            else  myTank.setMoving(Boolean.TRUE);
             if (bL) myTank.setDir(Dir.LEFT);
             if (bU) myTank.setDir(Dir.UP);
             if (bR) myTank.setDir(Dir.RIGHT);
             if (bD) myTank.setDir(Dir.DOWN);
+
+
         }
 
     }
