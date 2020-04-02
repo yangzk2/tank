@@ -1,7 +1,7 @@
 package com.yangzk.tank.v2;
 
 public class Main {
-    private static final int TIMEMILLIS=50;
+    private static final int TIMEMILLIS = 50;
 
     public static void main(String[] args){
 

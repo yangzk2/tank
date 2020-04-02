@@ -10,7 +10,7 @@ public class Bullet {
     private static final int SPEED = 8;
 
     private int x,y;//子弹发出的位置
-    private static int WIDTH =20 , HEIGHT =20;//子弹大小
+    private static int WIDTH =10 , HEIGHT =10;//子弹大小
     //方向
     private Dir dir;
 
@@ -32,11 +32,26 @@ public class Bullet {
         if(!live){
             tankFrame.bullets.remove(this);
         }
-        Color color = graphics.getColor();
-        graphics.setColor(Color.RED);//设置子弹颜色
+        switch (dir){
+            case LEFT:
+                graphics.drawImage(ResourceMgr.bulletLeft,x,y,null);
+                break;
+            case UP:
+                graphics.drawImage(ResourceMgr.bulletUp,x,y,null);
+                break;
+            case RIGHT:
+                graphics.drawImage(ResourceMgr.bullRight,x,y,null);
+                break;
+            case DOWN:
+                graphics.drawImage(ResourceMgr.bulletDown,x,y,null);
+                break;
+        }
 
-        graphics.fillOval(x,y,WIDTH,HEIGHT);//设置子弹发射位置及大小
-        graphics.setColor(color);//设置子弹颜色
+//        Color color = graphics.getColor();
+//        graphics.setColor(Color.RED);//设置子弹颜色
+//
+//        graphics.fillOval(x,y,WIDTH,HEIGHT);//设置子弹发射位置及大小
+//        graphics.setColor(color);//设置子弹颜色
         //子弹移动
         this.move();
     }
