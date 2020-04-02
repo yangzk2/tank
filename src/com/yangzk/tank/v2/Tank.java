@@ -15,6 +15,7 @@ public class Tank {
 
     private boolean moving = Boolean.FALSE;//移动
     private TankFrame tankFrame;//坦克窗口
+    private boolean living = true;//坦克死亡
     public Tank(int x, int y, Dir dir,TankFrame tankFrame) {
         this.x = x;
         this.y = y;
@@ -27,6 +28,9 @@ public class Tank {
      * @param graphics
      */
     public void paint(Graphics graphics) {
+        if(!living){
+            tankFrame.tanks.remove(this);
+        }
         //根据方向替换图片
         switch (dir){
             case LEFT:
@@ -81,6 +85,14 @@ public class Tank {
         this.dir = dir;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     /**
      * 发射子弹
      */
@@ -88,5 +100,12 @@ public class Tank {
         int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
         int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
         tankFrame.bullets.add(new Bullet(bx,by,this.dir,tankFrame));
+    }
+
+    /**
+     * 坦克爆炸消失
+     */
+    public void die() {
+        this.living = false;
     }
 }

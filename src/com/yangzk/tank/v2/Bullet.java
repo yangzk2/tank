@@ -15,7 +15,7 @@ public class Bullet {
     //方向
     private Dir dir;
 
-    private boolean live = true;
+    private boolean living = true;
     private TankFrame tankFrame;
 
     public Bullet(int x,int y, Dir dir,TankFrame tankFrame){
@@ -30,7 +30,7 @@ public class Bullet {
      * @param graphics
      */
     public void paint(Graphics graphics){
-        if(!live){
+        if(!living){
             tankFrame.bullets.remove(this);
         }
         //根据方向替换图片
@@ -76,8 +76,28 @@ public class Bullet {
                 y+=SPEED;
                 break;
         }
-        if(x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) live = false;
+        if(x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) living = false;
 
 
+    }
+
+    /**
+     * 子弹与坦克碰撞
+     * @param tank
+     */
+    public void collideWith(Tank tank) {
+        Rectangle rectangle1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
+        Rectangle rectangle2 = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);
+        if(rectangle1.intersects(rectangle2)){//判断是否相交
+            tank.die();
+            this.die();
+        }
+    }
+
+    /**
+     * 子弹命中消失
+     */
+    private void die() {
+        this.living = false;
     }
 }
