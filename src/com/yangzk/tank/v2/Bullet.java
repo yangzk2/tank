@@ -10,7 +10,8 @@ public class Bullet {
     private static final int SPEED = 8;
 
     private int x,y;//子弹发出的位置
-    private static int WIDTH =10 , HEIGHT =10;//子弹大小
+    public final static int WIDTH = ResourceMgr.bulletLeft.getWidth();//子弹高度
+    public final static int HEIGHT = ResourceMgr.bulletLeft.getHeight();//子弹高度
     //方向
     private Dir dir;
 
@@ -32,6 +33,7 @@ public class Bullet {
         if(!live){
             tankFrame.bullets.remove(this);
         }
+        //根据方向替换图片
         switch (dir){
             case LEFT:
                 graphics.drawImage(ResourceMgr.bulletLeft,x,y,null);

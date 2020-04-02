@@ -7,9 +7,12 @@ import java.awt.*;
  */
 public class Tank {
     private int x,y;//坦克所在位置
-    private static int WIDTH =50 , HEIGHT =50;//坦克大小
     private Dir dir = Dir.DOWN;//坦克移动的方向
     private static final int SPEED = 5;//坦克的速度
+
+    public final static int WIDTH = ResourceMgr.tankLeft.getWidth();//坦克宽度
+    public final static int HEIGHT = ResourceMgr.tankLeft.getHeight();//坦克高度
+
     private boolean moving = Boolean.FALSE;//移动
     private TankFrame tankFrame;//坦克窗口
     public Tank(int x, int y, Dir dir,TankFrame tankFrame) {
@@ -24,7 +27,7 @@ public class Tank {
      * @param graphics
      */
     public void paint(Graphics graphics) {
-        //画出坦克所在位置及大小
+        //根据方向替换图片
         switch (dir){
             case LEFT:
                 graphics.drawImage(ResourceMgr.tankLeft,x,y,null);
@@ -40,7 +43,7 @@ public class Tank {
                 break;
 
         }
-
+        //画出坦克所在位置及大小
 //        Color color = graphics.getColor();
 //        graphics.setColor(Color.YELLOW);//设置坦克颜色
 //        graphics.fillRect(x,y,WIDTH,HEIGHT);//设置坦克所在位置及大小
@@ -82,6 +85,8 @@ public class Tank {
      * 发射子弹
      */
     public void fire() {
-        tankFrame.bullets.add(new Bullet(this.x,this.y,this.dir,tankFrame));
+        int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
+        int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
+        tankFrame.bullets.add(new Bullet(bx,by,this.dir,tankFrame));
     }
 }
