@@ -23,6 +23,7 @@ public class Explode {
         this.x = x;
         this.y = y;
         this.tankFrame = tankFrame;
+        //Explode加载完成调用发出一次爆炸声音
         new Thread(()->new Audio("audio/explode.wav").play()).start();
     }
 

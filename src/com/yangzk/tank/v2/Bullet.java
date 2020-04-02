@@ -15,9 +15,9 @@ public class Bullet {
     //方向
     private Dir dir;
 
-    private boolean living = true;
-    private TankFrame tankFrame;
-    private Group group = Group.BAD;
+    private boolean living = true;//子弹死亡 默认活着
+    private TankFrame tankFrame; //坦克窗口
+    private Group group = Group.BAD;//对子弹进行分组 默认为敌方子弹
 
     public Bullet(int x,int y, Dir dir,TankFrame tankFrame,Group group){
         this.x = x;
@@ -90,13 +90,13 @@ public class Bullet {
      */
     public void collideWith(Tank tank) {
         if(this.group == tank.getGroup()) return;
-        //TODO: 用一个Rectangle来记录子弹的位置
+        //TODO: 用一个Rectangle来记录子弹和坦克的位置
         Rectangle rectangle1 = new Rectangle(this.x,this.y,WIDTH,HEIGHT);
         Rectangle rectangle2 = new Rectangle(tank.getX(),tank.getY(),Tank.WIDTH,Tank.HEIGHT);
 
         if(rectangle1.intersects(rectangle2)){//判断是否相交
-            tank.die();
-            this.die();
+            tank.die();//坦克死亡移除
+            this.die();//子弹死亡移除
         }
     }
 

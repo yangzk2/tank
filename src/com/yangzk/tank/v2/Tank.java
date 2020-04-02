@@ -14,12 +14,12 @@ public class Tank {
     public final static int WIDTH = ResourceMgr.tankLeft.getWidth();//坦克宽度
     public final static int HEIGHT = ResourceMgr.tankLeft.getHeight();//坦克高度
 
-    private Random random = new Random();
+    private Random random = new Random();//声明随机 暂时用再发射子弹上，随机发射子弹
 
     private boolean moving = Boolean.TRUE;//移动
     private TankFrame tankFrame;//坦克窗口
-    private boolean living = true;//坦克死亡
-    private Group group = Group.BAD;
+    private boolean living = true;//坦克死亡 默认活着
+    private Group group = Group.BAD;//对坦克进行分组 默认为敌方坦克
     public Tank(int x, int y, Dir dir,TankFrame tankFrame,Group group) {
         this.x = x;
         this.y = y;
