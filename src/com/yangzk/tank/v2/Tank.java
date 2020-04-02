@@ -1,6 +1,7 @@
 package com.yangzk.tank.v2;
 
 import java.awt.*;
+import java.util.Random;
 
 /**
  * 创建坦克类
@@ -8,19 +9,23 @@ import java.awt.*;
 public class Tank {
     private int x,y;//坦克所在位置
     private Dir dir = Dir.DOWN;//坦克移动的方向
-    private static final int SPEED = 5;//坦克的速度
+    private static final int SPEED = 2;//坦克的速度
 
     public final static int WIDTH = ResourceMgr.tankLeft.getWidth();//坦克宽度
     public final static int HEIGHT = ResourceMgr.tankLeft.getHeight();//坦克高度
 
-    private boolean moving = Boolean.FALSE;//移动
+    private Random random = new Random();
+
+    private boolean moving = Boolean.TRUE;//移动
     private TankFrame tankFrame;//坦克窗口
     private boolean living = true;//坦克死亡
-    public Tank(int x, int y, Dir dir,TankFrame tankFrame) {
+    private Group group = Group.BAD;
+    public Tank(int x, int y, Dir dir,TankFrame tankFrame,Group group) {
         this.x = x;
         this.y = y;
         this.dir = dir;
         this.tankFrame = tankFrame;
+        this.group = group;
     }
 
     /**
@@ -75,6 +80,24 @@ public class Tank {
                 y+=SPEED;
                 break;
         }
+        //随机打出子弹
+        if (random.nextInt(10) > 8) this.fire();
+    }
+
+    /**
+     * 发射子弹
+     */
+    public void fire() {
+        int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
+        int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
+        tankFrame.bullets.add(new Bullet(bx,by,this.dir,tankFrame,this.group));
+    }
+
+    /**
+     * 坦克爆炸消失
+     */
+    public void die() {
+        this.living = false;
     }
 
     public void setMoving(boolean moving) {
@@ -93,19 +116,11 @@ public class Tank {
         return y;
     }
 
-    /**
-     * 发射子弹
-     */
-    public void fire() {
-        int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
-        int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
-        tankFrame.bullets.add(new Bullet(bx,by,this.dir,tankFrame));
+    public Group getGroup() {
+        return group;
     }
 
-    /**
-     * 坦克爆炸消失
-     */
-    public void die() {
-        this.living = false;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

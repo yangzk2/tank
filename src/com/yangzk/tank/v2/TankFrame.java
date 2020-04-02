@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class TankFrame extends Frame {
     //创建坦克
-    Tank myTank = new Tank(200,400,Dir.DOWN,this);
+    Tank myTank = new Tank(200,400,Dir.DOWN,this,Group.GOOD);
     List<Bullet> bullets = new ArrayList();
     List<Tank> tanks = new ArrayList<>();
     //创建子弹
-    Bullet bullet = new Bullet(300,300,Dir.DOWN,this);
+    Bullet bullet = new Bullet(300,300,Dir.DOWN,this,Group.GOOD);
     static final int GAME_WIDTH = 800, GAME_HEIGHT = 600; //游戏窗口大小
     public TankFrame() throws HeadlessException {
         this.setVisible(true);//展示窗口
