@@ -25,10 +25,26 @@ public class Tank {
      */
     public void paint(Graphics graphics) {
         //画出坦克所在位置及大小
-        Color color = graphics.getColor();
-        graphics.setColor(Color.YELLOW);//设置坦克颜色
-        graphics.fillRect(x,y,WIDTH,HEIGHT);//设置坦克所在位置及大小
-        graphics.setColor(color);
+        switch (dir){
+            case LEFT:
+                graphics.drawImage(ResourceMgr.tankLeft,x,y,null);
+                break;
+            case UP:
+                graphics.drawImage(ResourceMgr.tankUp,x,y,null);
+                break;
+            case RIGHT:
+                graphics.drawImage(ResourceMgr.tankRight,x,y,null);
+                break;
+            case DOWN:
+                graphics.drawImage(ResourceMgr.tankDown,x,y,null);
+                break;
+
+        }
+
+//        Color color = graphics.getColor();
+//        graphics.setColor(Color.YELLOW);//设置坦克颜色
+//        graphics.fillRect(x,y,WIDTH,HEIGHT);//设置坦克所在位置及大小
+//        graphics.setColor(color);
        this.move();//移动坦克
     }
 

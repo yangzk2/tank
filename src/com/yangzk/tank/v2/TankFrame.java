@@ -37,6 +37,10 @@ public class TankFrame extends Frame {
             }
         });
     }
+
+    /**
+     * 画板之前调用 创建双缓冲区
+     */
     private Image offScreenImage = null;
     @Override
     public void update(Graphics graphics){
