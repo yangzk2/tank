@@ -20,6 +20,7 @@ public class TankFrame extends Frame {
     Tank myTank = new Tank(200,400,Dir.DOWN,this,Group.GOOD);
     List<Bullet> bullets = new ArrayList();
     List<Tank> tanks = new ArrayList<>();
+    Explode explode = new Explode(100,100,this);
     //创建子弹
     Bullet bullet = new Bullet(300,300,Dir.DOWN,this,Group.GOOD);
     static final int GAME_WIDTH = 800, GAME_HEIGHT = 600; //游戏窗口大小
@@ -81,6 +82,7 @@ public class TankFrame extends Frame {
                 bullets.get(i).collideWith(tanks.get(j));
             }
         }
+        explode.paint(graphics);
         //error 当方法检测到对象的并发修改，但不允许这种修改时，抛出Exception in thread "AWT-EventQueue-0" java.util.ConcurrentModificationException 解决办法就是换一种写法用fori进行处理
         //例如，某个线程在 Collection 上进行迭代时，通常不允许另一个线性修改该 Collection。通常在这些情况下，迭代的结果是不明确的。如果检测到这种行为，一些迭代器实现（包括 JRE 提供的所有通用 collection 实现）可能选择抛出此异常。执行该操作的迭代器称为快速失败 迭代器，因为迭代器很快就完全失败，而不会冒着在将来某个时间任意发生不确定行为的风险。
         // 注意，此异常不会始终指出对象已经由不同 线程并发修改。如果单线程发出违反对象协定的方法调用序列，则该对象可能抛出此异常。例如，如果线程使用快速失败迭代器在 collection 上迭代时直接修改该 collection，则迭代器将抛出此异常。
