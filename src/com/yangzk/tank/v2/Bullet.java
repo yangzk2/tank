@@ -97,6 +97,7 @@ public class Bullet {
         if(rectangle1.intersects(rectangle2)){//判断是否相交
             tank.die();//坦克死亡移除
             this.die();//子弹死亡移除
+            tankFrame.explodes.add(new Explode(x,y,tankFrame));
         }
     }
 

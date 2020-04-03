@@ -14,7 +14,7 @@ public class Explode {
     private int x,y;//爆炸发出的位置
 
 
-    private boolean living = true;
+   // private boolean living = true;
     private TankFrame tankFrame;
 
     private int step = 0;
@@ -35,7 +35,7 @@ public class Explode {
 
        graphics.drawImage(ResourceMgr.explodes[step++],x,y,null);
        if(step >= ResourceMgr.explodes.length)//如果step等于爆炸图片数组的长度 设置回默认值
-           step = 0;
+        tankFrame.explodes.remove(this);//爆炸完成后移除
     }
 
 }
