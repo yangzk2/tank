@@ -11,6 +11,7 @@ public class Main {
         for(int i = 0 ; i < 5 ; i++){
             frame.tanks.add(new Tank(50 + i*80,200,Dir.DOWN,frame,Group.BAD));
         }
+        //new Thread(()->new Audio("audio/war1.wav").loop()).start();
         while(true){
             try {
                 Thread.sleep(TIMEMILLIS);

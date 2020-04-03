@@ -18,15 +18,15 @@ public class ResourceMgr {
     static{
         try {
             //将坦克图片加载进入内存中
-            tankLeft = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankL.gif"));
-            tankUp = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankU.gif"));
-            tankRight = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankR.gif"));
-            tankDown = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/tankD.gif"));
+            tankUp = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/GoodTank1.png"));
+            tankLeft = ImageUtil.rotateImage(tankUp,-90);
+            tankRight = ImageUtil.rotateImage(tankUp,90);
+            tankDown = ImageUtil.rotateImage(tankUp,180);
             //将子弹图片加载进入内存中
-            bulletLeft = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletL.gif"));
-            bulletUp = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.gif"));
-            bullRight = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletR.gif"));
-            bulletDown = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletD.gif"));
+            bulletUp = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/bulletU.png"));
+            bulletLeft = ImageUtil.rotateImage(bulletUp,-90);
+            bullRight = ImageUtil.rotateImage(bulletUp,90);
+            bulletDown = ImageUtil.rotateImage(bulletUp,180);
             //将爆炸图片加载进入内存中
             for(int i = 0; i < 16; i++) explodes[i] = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/e"+(i+1)+".gif"));
         } catch (IOException e) {

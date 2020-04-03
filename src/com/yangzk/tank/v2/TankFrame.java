@@ -23,7 +23,7 @@ public class TankFrame extends Frame {
     Explode explode = new Explode(100,100,this);
     //创建子弹
     Bullet bullet = new Bullet(300,300,Dir.DOWN,this,Group.GOOD);
-    static final int GAME_WIDTH = 800, GAME_HEIGHT = 600; //游戏窗口大小
+    static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960; //游戏窗口大小
     public TankFrame() throws HeadlessException {
         this.setVisible(true);//展示窗口
         this.setSize(GAME_WIDTH,GAME_HEIGHT);//设置窗口大小
@@ -79,10 +79,9 @@ public class TankFrame extends Frame {
         for(int i = 0 ; i < tanks.size();i++){
             tanks.get(i).paint(graphics);
         }
-        //循环画出子弹与坦克的每一次相交
+        //循环画出子弹与坦克相交
         for(int i =0; i<bullets.size(); i++){
             for(int j =0; j<tanks.size(); j++){
-                //如果子弹与坦克相交
                 bullets.get(i).collideWith(tanks.get(j));
             }
         }
@@ -134,7 +133,7 @@ public class TankFrame extends Frame {
            }
             //设置坦克方向
            setMinTankDir();
-
+            new Thread(()->new Audio("audio/tank_move.wav").play()).start();
         }
 
         /**

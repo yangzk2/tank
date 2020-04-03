@@ -16,3 +16,11 @@ P
  src/com/yangzk/tank/v2/Tank.java,8\e\8ed419696b06c5ea936722097caa99a791fea31c
 U
 %src/com/yangzk/tank/v2/TankFrame.java,d\6\d60b2d483fb7f6a33c497a91e44b0f3458f8706d
+Q
+!src/com/yangzk/tank/v2/Group.java,e\a\eaa762c1e85524183041b9976aa47a32331e413b
+W
+'src/com/yangzk/tank/v2/ResourceMgr.java,6\a\6aadeb92d74223d8fbd83c799089ba41888acb45
+Q
+!src/com/yangzk/tank/v2/Audio.java,d\d\dde07e04bf66457f7fc86ae6db520a748df7b484
+S
+#src/com/yangzk/tank/v2/Explode.java,3\5\35102079891d3cadade8b357c09702162518606b
