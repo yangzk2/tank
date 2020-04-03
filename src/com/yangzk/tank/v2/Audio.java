@@ -49,7 +49,7 @@ public class Audio {
 	public Audio(String fileName) {
 		try {
 			URL url = Audio.class.getClassLoader().getResource(fileName);
-			System.out.println(url);
+			//System.out.println(url);
 			audioInputStream = AudioSystem.getAudioInputStream(url);
 			audioFormat = audioInputStream.getFormat();
 			dataLine_info = new DataLine.Info(SourceDataLine.class, audioFormat);
@@ -68,7 +68,7 @@ public class Audio {
 			int len = 0;
 			sourceDataLine.open(audioFormat, 1024*5);
 			sourceDataLine.start();
-			System.out.println(audioInputStream.markSupported());
+			//System.out.println(audioInputStream.markSupported());
 			// audioInputStream.mark(12358946);
 			while ((len = audioInputStream.read(b)) > 0) {
 				sourceDataLine.write(b, 0, len);
