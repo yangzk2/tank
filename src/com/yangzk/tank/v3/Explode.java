@@ -10,8 +10,8 @@ public class Explode {
 
 
 
-    public final static int WIDTH = ResourceMgr.explodes[0].getWidth();//子弹高度
-    public final static int HEIGHT = ResourceMgr.explodes[0].getHeight();//子弹高度
+    public final static int WIDTH = ResourceMgr.getInstance().getExplodes()[0].getWidth();//子弹高度
+    public final static int HEIGHT = ResourceMgr.getInstance().getExplodes()[0].getHeight();//子弹高度
     private int x,y;//爆炸发出的位置
 
 
@@ -34,8 +34,8 @@ public class Explode {
      */
     public void paint(Graphics graphics){
 
-       graphics.drawImage(ResourceMgr.explodes[step++],x,y,null);
-       if(step >= ResourceMgr.explodes.length)//如果step等于爆炸图片数组的长度 设置回默认值
+       graphics.drawImage(ResourceMgr.getInstance().getExplodes()[step++],x,y,null);
+       if(step >= ResourceMgr.getInstance().getExplodes().length)//如果step等于爆炸图片数组的长度 设置回默认值
         tankFrame.explodes.remove(this);//爆炸完成后移除
     }
 

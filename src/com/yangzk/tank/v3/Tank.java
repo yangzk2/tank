@@ -11,9 +11,9 @@ public class Tank {
     private Dir dir = Dir.DOWN;//坦克移动的方向
     private static final int SPEED = 2;//坦克的速度
 
-    public final static int WIDTH = ResourceMgr.goodTankLeft.getWidth();//坦克宽度
-    public final static int HEIGHT = ResourceMgr.goodTankLeft.getHeight();//坦克高度
-
+    public final static int WIDTH = ResourceMgr.getInstance().getBadTankLeft().getWidth();//坦克宽度
+    public final static int HEIGHT = ResourceMgr.getInstance().getBadTankLeft().getHeight();//坦克高度
+    private ResourceMgr resounceMgr = ResourceMgr.getInstance();//获取内存中的资源实例
     private Rectangle rectangle = new Rectangle();
 
     private Random random = new Random();//声明随机 暂时用再发射子弹上，随机发射子弹
@@ -43,16 +43,16 @@ public class Tank {
         //根据方向替换图片
         switch (dir){
             case LEFT:
-                graphics.drawImage(this.group == Group.GOOD ? ResourceMgr.goodTankLeft : ResourceMgr.badTankLeft,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ? resounceMgr.getBadTankLeft() : resounceMgr.getBadTankLeft(),x,y,null);
                 break;
             case UP:
-                graphics.drawImage(this.group == Group.GOOD ? ResourceMgr.goodTankUp : ResourceMgr.badTankUp,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ? resounceMgr.getGoodTankUp() : resounceMgr.getBadTankUp(),x,y,null);
                 break;
             case RIGHT:
-                graphics.drawImage(this.group == Group.GOOD ? ResourceMgr.goodTankRight : ResourceMgr.badTankRight,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ? resounceMgr.getGoodTankRight() : resounceMgr.getBadTankRight(),x,y,null);
                 break;
             case DOWN:
-                graphics.drawImage(this.group == Group.GOOD ? ResourceMgr.goodTankDown : ResourceMgr.badTankDown,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ? resounceMgr.getGoodTankDown() : resounceMgr.getBadTankDown(),x,y,null);
                 break;
 
         }
@@ -157,4 +157,5 @@ public class Tank {
     public Rectangle getRectangle() {
         return rectangle;
     }
+
 }

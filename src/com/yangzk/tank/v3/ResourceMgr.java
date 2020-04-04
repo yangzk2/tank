@@ -2,20 +2,23 @@ package com.yangzk.tank.v3;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.print.PageFormat;
 import java.io.IOException;
 
 /**
  * 加载静态资源类
  */
-public class ResourceMgr {
-
-    public static BufferedImage goodTankLeft, goodTankUp, goodTankRight, goodTankDown;//加载坦克图片
-    public static BufferedImage badTankLeft, badTankUp, badTankRight, badTankDown;//加载坦克图片
-
-    public static BufferedImage bulletLeft, bulletUp, bullRight, bulletDown;//加载子弹图片
-    public static BufferedImage[] explodes = new BufferedImage[16];
-
-    static{
+public final class ResourceMgr {
+    private static final ResourceMgr INSTANCE =new ResourceMgr();
+    private BufferedImage goodTankLeft, goodTankUp, goodTankRight, goodTankDown;//加载坦克图片
+    private BufferedImage badTankLeft, badTankUp, badTankRight, badTankDown;//加载坦克图片
+    private BufferedImage bulletLeft, bulletUp, bullRight, bulletDown;//加载子弹图片
+    private BufferedImage[] explodes = new BufferedImage[16];
+    //构造方法私有化
+    private ResourceMgr(){
+        if(null != INSTANCE){
+            throw new RuntimeException("不允许实例化多个对象");
+        }
         try {
             //将我方坦克图片加载进入内存中
             goodTankUp = ImageIO.read(ResourceMgr.class.getClassLoader().getResourceAsStream("images/GoodTank1.png"));
@@ -37,5 +40,72 @@ public class ResourceMgr {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    //创建对象唯一入口
+    public static final ResourceMgr getInstance(){
+        return INSTANCE;
+    }
+
+
+    public BufferedImage getGoodTankLeft() {
+        return goodTankLeft;
+    }
+
+    public BufferedImage getGoodTankUp() {
+        return goodTankUp;
+    }
+
+    public BufferedImage getGoodTankRight() {
+        return goodTankRight;
+    }
+
+    public BufferedImage getGoodTankDown() {
+        return goodTankDown;
+    }
+
+    public BufferedImage getBadTankLeft() {
+        return badTankLeft;
+    }
+
+    public BufferedImage getBadTankUp() {
+        return badTankUp;
+    }
+
+    public BufferedImage getBadTankRight() {
+        return badTankRight;
+    }
+
+    public BufferedImage getBadTankDown() {
+        return badTankDown;
+    }
+
+    public BufferedImage getBulletLeft() {
+        return bulletLeft;
+    }
+
+    public BufferedImage getBulletUp() {
+        return bulletUp;
+    }
+
+    public BufferedImage getBullRight() {
+        return bullRight;
+    }
+
+    public BufferedImage getBulletDown() {
+        return bulletDown;
+    }
+
+    public BufferedImage[] getExplodes() {
+        return explodes;
+    }
+
+    public static void main(String[] args) {
+        ResourceMgr instance1 = ResourceMgr.getInstance();
+        ResourceMgr instance2 =  ResourceMgr.getInstance();
+        System.out.println(instance1 == instance2);
+        BufferedImage badTankLeft1 = ResourceMgr.getInstance().getBadTankLeft();
+        BufferedImage badTankLeft2 = ResourceMgr.getInstance().getBadTankLeft();
+        System.out.println(badTankLeft1==badTankLeft2);
+
     }
 }

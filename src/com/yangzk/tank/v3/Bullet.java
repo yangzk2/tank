@@ -10,9 +10,9 @@ public class Bullet {
     private static final int SPEED = 8;
 
     private int x,y;//子弹发出的位置
-    public final static int WIDTH = ResourceMgr.bulletLeft.getWidth();//子弹高度
-    public final static int HEIGHT = ResourceMgr.bulletLeft.getHeight();//子弹高度
-
+    public final static int WIDTH = ResourceMgr.getInstance().getBulletLeft().getWidth();//子弹高度
+    public final static int HEIGHT = ResourceMgr.getInstance().getBulletLeft().getHeight();//子弹高度
+    private ResourceMgr resounceMgr = ResourceMgr.getInstance();//获取内存中的资源实例
     private Rectangle rectangle = new Rectangle();
 
     //方向
@@ -45,16 +45,16 @@ public class Bullet {
         //根据方向替换图片
         switch (dir){
             case LEFT:
-                graphics.drawImage(ResourceMgr.bulletLeft,x,y,null);
+                graphics.drawImage(resounceMgr.getBulletLeft(),x,y,null);
                 break;
             case UP:
-                graphics.drawImage(ResourceMgr.bulletUp,x,y,null);
+                graphics.drawImage(resounceMgr.getBulletUp(),x,y,null);
                 break;
             case RIGHT:
-                graphics.drawImage(ResourceMgr.bullRight,x,y,null);
+                graphics.drawImage(resounceMgr.getBullRight(),x,y,null);
                 break;
             case DOWN:
-                graphics.drawImage(ResourceMgr.bulletDown,x,y,null);
+                graphics.drawImage(resounceMgr.getBulletDown(),x,y,null);
                 break;
         }
 

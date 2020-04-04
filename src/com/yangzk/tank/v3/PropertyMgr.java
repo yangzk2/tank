@@ -9,7 +9,8 @@ import java.util.Properties;
 public class PropertyMgr {
     //声明并初始化Porpeties配置工具类
     private static final Properties properties = new Properties();
-
+    //构造方法私有化
+    private PropertyMgr(){}
    static{
         try {
             //读取配置文件
