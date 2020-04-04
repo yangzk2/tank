@@ -25,8 +25,6 @@ public class PropertyMgr {
      * @return
      */
     public static Object get(String key ){
-        //判断key值如果为空或者空字符串直接返回
-       if(null == key || "".equals(key)) return null;
        //返回key所对应的value值
        return properties.get(key);
     }
