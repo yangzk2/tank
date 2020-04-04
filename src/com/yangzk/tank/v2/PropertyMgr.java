@@ -1,0 +1,37 @@
+package com.yangzk.tank.v2;
+
+import java.io.IOException;
+import java.util.Properties;
+
+/**
+ * 配置工具类
+ */
+public class PropertyMgr {
+    //声明并初始化Porpeties配置工具类
+    private static final Properties properties = new Properties();
+
+   static{
+        try {
+            //读取配置文件
+            properties.load(PropertyMgr.class.getClassLoader().getResourceAsStream("config/config.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 通过key获取配置文件中所对应的value值
+     * @param key
+     * @return
+     */
+    public static Object get(String key ){
+        //判断key值如果为空或者空字符串直接返回
+       if(null == key || "".equals(key)) return null;
+       //返回key所对应的value值
+       return properties.get(key);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(PropertyMgr.get("initTankCount"));
+    }
+}
