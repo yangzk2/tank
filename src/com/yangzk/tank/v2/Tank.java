@@ -14,6 +14,8 @@ public class Tank {
     public final static int WIDTH = ResourceMgr.goodTankLeft.getWidth();//坦克宽度
     public final static int HEIGHT = ResourceMgr.goodTankLeft.getHeight();//坦克高度
 
+    private Rectangle rectangle = new Rectangle();
+
     private Random random = new Random();//声明随机 暂时用再发射子弹上，随机发射子弹
 
     private boolean moving = Boolean.FALSE;//移动
@@ -26,6 +28,10 @@ public class Tank {
         this.dir = dir;
         this.tankFrame = tankFrame;
         this.group = group;
+        rectangle.x = this.x;
+        rectangle.y = this.y;
+        rectangle.width = WIDTH;
+        rectangle.height = HEIGHT;
     }
 
     /**
@@ -80,6 +86,7 @@ public class Tank {
                 y+=SPEED;
                 break;
         }
+
         //判断是不是敌方坦克并且随机打出子弹
         if (this.group == Group.BAD && random.nextInt(100) > 95)
             this.fire();//发射炮弹
@@ -87,6 +94,10 @@ public class Tank {
         this.randomDir();//定义随机方向
         //边界检测
         this.boundsCheck();
+
+        // update rectangle
+        rectangle.x = this.x;
+        rectangle.y = this.y;
     }
 
     /**
@@ -143,7 +154,7 @@ public class Tank {
         return group;
     }
 
-    public void setGroup(Group group) {
-        this.group = group;
+    public Rectangle getRectangle() {
+        return rectangle;
     }
 }
