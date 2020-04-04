@@ -1,12 +1,11 @@
 package com.yangzk.tank.v2;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * 加载资源
+ * 加载静态资源类
  */
 public class ResourceMgr {
 

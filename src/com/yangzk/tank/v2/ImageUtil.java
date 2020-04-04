@@ -4,7 +4,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * 图片工具类 旋转图片
+ * 图片工具类
+ * 旋转图片
  */
 public class ImageUtil {
     /**

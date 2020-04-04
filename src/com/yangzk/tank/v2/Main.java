@@ -1,5 +1,8 @@
 package com.yangzk.tank.v2;
 
+/**
+ * 坦克大战启动类
+ */
 public class Main {
     private static final int TIMEMILLIS = 50;
 

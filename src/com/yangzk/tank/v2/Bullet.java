@@ -3,7 +3,7 @@ package com.yangzk.tank.v2;
 import java.awt.*;
 
 /**
- * 子弹
+ * 子弹类
  */
 public class Bullet {
 

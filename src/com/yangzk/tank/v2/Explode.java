@@ -3,6 +3,7 @@ package com.yangzk.tank.v2;
 import java.awt.*;
 
 /**
+ * 爆炸类
  * 子弹与坦克命中爆炸
  */
 public class Explode {

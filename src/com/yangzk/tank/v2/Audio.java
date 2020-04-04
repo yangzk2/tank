@@ -1,17 +1,12 @@
 package com.yangzk.tank.v2;
 
-import java.io.File;
+import javax.sound.sampled.*;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.FloatControl;
-import javax.sound.sampled.SourceDataLine;
-
+/**
+ * 音频工具类
+ */
 public class Audio {
 
 	byte[] b = new byte[1024 * 1024 * 15];
@@ -24,7 +19,7 @@ public class Audio {
 				int len = 0;
 				sourceDataLine.open(audioFormat, 1024 * 1024 * 15);
 				sourceDataLine.start();
-				System.out.println(audioInputStream.markSupported());
+				//System.out.println(audioInputStream.markSupported());
 				audioInputStream.mark(12358946);
 				while ((len = audioInputStream.read(b)) > 0) {
 					sourceDataLine.write(b, 0, len);
