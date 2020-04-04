@@ -98,6 +98,7 @@ public class Bullet {
         if(rectangle1.intersects(rectangle2)){//判断是否相交
             tank.die();//坦克死亡移除
             this.die();//子弹死亡移除
+            //子弹打中坦克爆炸位置
             int eX = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
             int eY = tank.getY() + Tank.HEIGHT/2 - Explode.HEIGHT/2;
             tankFrame.explodes.add(new Explode(eX,eY,tankFrame));

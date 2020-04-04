@@ -11,8 +11,8 @@ public class Tank {
     private Dir dir = Dir.DOWN;//坦克移动的方向
     private static final int SPEED = 2;//坦克的速度
 
-    public final static int WIDTH = ResourceMgr.tankLeft.getWidth();//坦克宽度
-    public final static int HEIGHT = ResourceMgr.tankLeft.getHeight();//坦克高度
+    public final static int WIDTH = ResourceMgr.goodTankLeft.getWidth();//坦克宽度
+    public final static int HEIGHT = ResourceMgr.goodTankLeft.getHeight();//坦克高度
 
     private Random random = new Random();//声明随机 暂时用再发射子弹上，随机发射子弹
 
@@ -33,22 +33,20 @@ public class Tank {
      * @param graphics
      */
     public void paint(Graphics graphics) {
-        if(!living){
-            tankFrame.tanks.remove(this);
-        }
+        if(!living) tankFrame.tanks.remove(this);
         //根据方向替换图片
         switch (dir){
             case LEFT:
-                graphics.drawImage(ResourceMgr.tankLeft,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ?ResourceMgr.goodTankLeft : ResourceMgr.badTankLeft,x,y,null);
                 break;
             case UP:
-                graphics.drawImage(ResourceMgr.tankUp,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ?ResourceMgr.goodTankUp : ResourceMgr.badTankUp,x,y,null);
                 break;
             case RIGHT:
-                graphics.drawImage(ResourceMgr.tankRight,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ?ResourceMgr.goodTankRight : ResourceMgr.badTankRight,x,y,null);
                 break;
             case DOWN:
-                graphics.drawImage(ResourceMgr.tankDown,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ?ResourceMgr.goodTankDown : ResourceMgr.badTankDown,x,y,null);
                 break;
 
         }
