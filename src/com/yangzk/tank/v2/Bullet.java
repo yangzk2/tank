@@ -78,6 +78,7 @@ public class Bullet {
                 y+=SPEED;
                 break;
         }
+        //如果x小于0或者小于0 或者x大于游戏窗口宽度或者y大于游戏窗口高度 子弹死亡
         if(x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT) living = false;
 
 
@@ -97,7 +98,9 @@ public class Bullet {
         if(rectangle1.intersects(rectangle2)){//判断是否相交
             tank.die();//坦克死亡移除
             this.die();//子弹死亡移除
-            tankFrame.explodes.add(new Explode(x,y,tankFrame));
+            int eX = tank.getX() + Tank.WIDTH/2 - Explode.WIDTH/2;
+            int eY = tank.getY() + Tank.HEIGHT/2 - Explode.HEIGHT/2;
+            tankFrame.explodes.add(new Explode(eX,eY,tankFrame));
         }
     }
 

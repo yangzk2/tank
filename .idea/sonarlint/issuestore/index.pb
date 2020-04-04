@@ -24,3 +24,9 @@ Q
 !src/com/yangzk/tank/v2/Audio.java,d\d\dde07e04bf66457f7fc86ae6db520a748df7b484
 S
 #src/com/yangzk/tank/v2/Explode.java,3\5\35102079891d3cadade8b357c09702162518606b
+U
+%src/com/yangzk/tank/v2/ImageUtil.java,c\d\cd6d6effe413e9c0e0c8f9444f2558e7df71e128
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+B
+src/test/Test.java,9\7\97149f4a5db5d13120306f482f28d324a383427b
