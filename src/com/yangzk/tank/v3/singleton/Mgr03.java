@@ -8,7 +8,7 @@ package com.yangzk.tank.v3.singleton;
  */
 public class Mgr03 {
     //实例化Mgr02
-    private static Mgr03 INSTANCE; //vloatile 保证原子的可见性
+    private static volatile Mgr03 INSTANCE; //vloatile 保证原子的可见性
     //构造私有化
     private Mgr03(){}
 

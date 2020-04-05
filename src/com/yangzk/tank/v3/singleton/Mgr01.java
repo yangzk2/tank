@@ -43,7 +43,7 @@ public class Mgr01 implements  Serializable{
             new Thread(()-> System.out.println(Mgr07.getInstance().hashCode())).start();
         }*/
 
-        /*try {
+      /*  try {
             Constructor<Mgr01> declaredConstructor = Mgr01.class.getDeclaredConstructor(null);
             declaredConstructor.setAccessible(true);
             Mgr01 mgr01 = declaredConstructor.newInstance();

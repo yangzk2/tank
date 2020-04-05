@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class Mgr05 {
     //实例化Mgr02
-    private static Mgr05 INSTANCE;
+    private static volatile Mgr05 INSTANCE;
     //构造私有化
     private Mgr05(){
     }
@@ -43,6 +43,7 @@ public class Mgr05 {
      * @param args
      */
     public static void main(String[] args) {
+        //多线程校验
        /* for (int i = 0; i < 100; i++) {
             new Thread(()-> System.out.println(Mgr05.getInstance().hashCode())).start();
         }*/

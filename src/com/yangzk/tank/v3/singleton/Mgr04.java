@@ -9,7 +9,7 @@ package com.yangzk.tank.v3.singleton;
  */
 public class Mgr04 {
     //实例化Mgr02
-    private static Mgr04 INSTANCE;
+    private static volatile Mgr04 INSTANCE;
     //构造私有化
     private Mgr04(){}
 

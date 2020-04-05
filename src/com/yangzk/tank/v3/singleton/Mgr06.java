@@ -3,13 +3,12 @@ package com.yangzk.tank.v3.singleton;
 import java.io.*;
 
 /**
- * 内部类写法
+ * 静态内部类写法
  * 懒汉式单例模式
  * 这种单例写法结合了懒汉式与饿汉式的优点 算的上是一种比较完美的单例写法了
  * 既没有产生性能上的问题 有没有造成资源的浪费
- * 当然也阻止了反射的破环问题 但是它不能组织序列话反序列化的破环所以说这种写法其实也是有问题的
- * 那么有没有一种更完美的写法 既能保证以上所有的情况发生又能防止序列话的破环问题呢 代码又简洁
- * 答案是当然是有的 咱们java的作者就为我们提供了一种单例的写法就是枚举式单例
+ * 也阻止了反射的破环和序列化破环问题
+ * 当然 我们的java的作者就为我们提供了一种单例的写法就是枚举式单例
  */
 public class Mgr06 implements Serializable{
 
@@ -34,7 +33,10 @@ public class Mgr06 implements Serializable{
        return LAZY.INSTANCE;
     }
 
-
+    //重写readResovle方法防止单例被序列化反序列化破环
+    private Object readResolve(){
+        return LAZY.INSTANCE;
+    }
     /**
      * 测试案例
      * @param args
