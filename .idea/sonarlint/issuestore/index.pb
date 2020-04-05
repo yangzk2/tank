@@ -28,5 +28,43 @@ U
 %src/com/yangzk/tank/v2/ImageUtil.java,c\d\cd6d6effe413e9c0e0c8f9444f2558e7df71e128
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-B
-src/test/Test.java,9\7\97149f4a5db5d13120306f482f28d324a383427b
+L
+src/config/config.properties,9\0\9004e11713ee42beed8f061dc0cc111c1243f7aa
+W
+'src/com/yangzk/tank/v2/PropertyMgr.java,a\1\a1a4987cb2671eb2dd7f42b8fb215eadd1140be8
+Q
+!src/com/yangzk/tank/v3/Group.java,2\1\2112d6d71d7947742113515f6d8a2cb49dc6db4c
+U
+%src/com/yangzk/tank/v3/ImageUtil.java,2\9\297dacfe74eee22bb19fa8b3ff749451efd4e430
+O
+src/com/yangzk/tank/v3/Dir.java,9\2\9247f891e47b8587c5370f84a7197fbc11f58f0e
+Q
+!src/com/yangzk/tank/v3/Audio.java,0\4\049ae1ae7814c32a47eacd58b98ccb2facf3c96a
+U
+%src/com/yangzk/tank/v3/TankFrame.java,c\b\cbab4abecf819f536bafbee2c9faba0a9bc3a632
+P
+ src/com/yangzk/tank/v3/Main.java,e\c\ec11b04396c98d8ebd3177a7f99dc3fa0c78df02
+[
++src/com/yangzk/tank/v3/singleton/Mgr01.java,4\d\4ded0ee919404ec8ed5f7c88e6930c98cc236f8a
+[
++src/com/yangzk/tank/v3/singleton/Mgr02.java,c\0\c04847f79db27aacc6a223009d0447bf85dd4b6d
+[
++src/com/yangzk/tank/v3/singleton/Mgr03.java,f\8\f83707fe5b0964e87dd2518cf88f68a1f05a82dd
+[
++src/com/yangzk/tank/v3/singleton/Mgr04.java,4\1\416b1b3359ff93f0a991881900b17a72e96ba875
+[
++src/com/yangzk/tank/v3/singleton/Mgr05.java,a\5\a580097ac89f5b43a33c61cbddf02d0f86b79518
+[
++src/com/yangzk/tank/v3/singleton/Mgr06.java,2\2\221704b658e5b2a921e295c6c9ae9173472803ee
+[
++src/com/yangzk/tank/v3/singleton/Mgr07.java,1\a\1ac5efb1181cb114a56c090a938b19cd43647613
+R
+"src/com/yangzk/tank/v3/Bullet.java,4\a\4a6bc0350a374715a392b7082cf3abbcceab2dcb
+S
+#src/com/yangzk/tank/v3/Explode.java,5\9\59640958ec73a618c6cb0220757d145ca06fd35d
+W
+'src/com/yangzk/tank/v3/ResourceMgr.java,1\a\1a0d8ad0adcc0b30a7b2392a89656d3e6aac1a34
+P
+ src/com/yangzk/tank/v3/Tank.java,9\6\9644d3d65e4e5b3fc5e72ee0f1f267d3bf47938a
+W
+'src/com/yangzk/tank/v3/PropertyMgr.java,f\9\f977ddccfa6cf3aaace9dd8dff7429cd8125a497
