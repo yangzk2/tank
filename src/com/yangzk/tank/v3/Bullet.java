@@ -7,7 +7,7 @@ import java.awt.*;
  */
 public class Bullet {
 
-    private static final int SPEED = 8;
+    private static final int SPEED = Integer.parseInt((String)PropertyMgr.get("bulletSpeed"));
 
     private int x,y;//子弹发出的位置
     public final static int WIDTH = ResourceMgr.getInstance().getBulletLeft().getWidth();//子弹高度

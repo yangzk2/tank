@@ -25,7 +25,7 @@ public class TankFrame extends Frame {
 
     //创建子弹
     Bullet bullet = new Bullet(300,300,Dir.DOWN,this,Group.GOOD);
-    static final int GAME_WIDTH = 1080, GAME_HEIGHT = 960; //游戏窗口大小
+    static final int GAME_WIDTH = Integer.parseInt((String)PropertyMgr.get("gameWidth")), GAME_HEIGHT = Integer.parseInt((String)PropertyMgr.get("gameHeight")); //游戏窗口大小
     public TankFrame() throws HeadlessException {
         this.setVisible(true);//展示窗口
         this.setSize(GAME_WIDTH,GAME_HEIGHT);//设置窗口大小

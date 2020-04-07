@@ -1,6 +1,8 @@
 package com.yangzk.tank.v3;
 
 import java.awt.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Random;
 public class Tank {
     private int x,y;//坦克所在位置
     private Dir dir = Dir.DOWN;//坦克移动的方向
-    private static final int SPEED = 2;//坦克的速度
+    private static final int SPEED = Integer.parseInt((String)PropertyMgr.get("tankSpeed"));//坦克的速度
 
     public final static int WIDTH = ResourceMgr.getInstance().getBadTankLeft().getWidth();//坦克宽度
     public final static int HEIGHT = ResourceMgr.getInstance().getBadTankLeft().getHeight();//坦克高度
@@ -33,8 +35,27 @@ public class Tank {
         rectangle.y = this.y;
         rectangle.width = WIDTH;
         rectangle.height = HEIGHT;
-        if(this.group == Group.GOOD) //如果是我方坦克可以四方打出子弹
-            fireStrategy = FourDirFireStrategy.getInstance();
+        try {
+            String strategy =(String)PropertyMgr.get("badFS");
+            if(this.group == Group.GOOD) {  //如果是我方坦克可以四方打出子弹
+                // fireStrategy = FourDirFireStrategy.getInstance();
+                strategy = (String) PropertyMgr.get("goodFS");
+            }
+            Class<?> forName = Class.forName(strategy);
+            Constructor<FireStrategy> declaredConstructor = (Constructor<FireStrategy>) forName.getDeclaredConstructor(null);
+            declaredConstructor.setAccessible(true);
+            fireStrategy = declaredConstructor.newInstance();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -46,7 +67,7 @@ public class Tank {
         //根据方向替换图片
         switch (dir){
             case LEFT:
-                graphics.drawImage(this.group == Group.GOOD ? resounceMgr.getBadTankLeft() : resounceMgr.getBadTankLeft(),x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ? resounceMgr.getGoodTankLeft() : resounceMgr.getBadTankLeft(),x,y,null);
                 break;
             case UP:
                 graphics.drawImage(this.group == Group.GOOD ? resounceMgr.getGoodTankUp() : resounceMgr.getBadTankUp(),x,y,null);

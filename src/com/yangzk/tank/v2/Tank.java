@@ -43,7 +43,7 @@ public class Tank {
         //根据方向替换图片
         switch (dir){
             case LEFT:
-                graphics.drawImage(this.group == Group.GOOD ?ResourceMgr.goodTankLeft : ResourceMgr.badTankLeft,x,y,null);
+                graphics.drawImage(this.group == Group.GOOD ?ResourceMgr.goodTankLeft : ResourceMgr.goodTankLeft,x,y,null);
                 break;
             case UP:
                 graphics.drawImage(this.group == Group.GOOD ?ResourceMgr.goodTankUp : ResourceMgr.badTankUp,x,y,null);
