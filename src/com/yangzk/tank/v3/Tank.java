@@ -22,6 +22,7 @@ public class Tank {
     private TankFrame tankFrame;//坦克窗口
     private boolean living = true;//坦克死亡 默认活着
     private Group group = Group.BAD;//对坦克进行分组 默认为敌方坦克
+    private FireStrategy fireStrategy = DefaultFireStrategy.getInstance();//开火策略默认开火
     public Tank(int x, int y, Dir dir, TankFrame tankFrame, Group group) {
         this.x = x;
         this.y = y;
@@ -32,6 +33,8 @@ public class Tank {
         rectangle.y = this.y;
         rectangle.width = WIDTH;
         rectangle.height = HEIGHT;
+        if(this.group == Group.GOOD) //如果是我方坦克可以四方打出子弹
+            fireStrategy = FourDirFireStrategy.getInstance();
     }
 
     /**
@@ -89,7 +92,7 @@ public class Tank {
 
         //判断是不是敌方坦克并且随机打出子弹
         if (this.group == Group.BAD && random.nextInt(100) > 95)
-            this.fire();//发射炮弹
+            this.fire(fireStrategy);//发射炮弹
         if(this.group == Group.BAD && random.nextInt(100) > 95)
         this.randomDir();//定义随机方向
         //边界检测
@@ -120,11 +123,12 @@ public class Tank {
     /**
      * 发射子弹
      */
-    public void fire() {
-        int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
+    public void fire(FireStrategy fireStrategy) {
+        fireStrategy.fire(this);
+       /* int bx = this.x + Tank.WIDTH/2 - Bullet.WIDTH/2;
         int by = this.y + Tank.HEIGHT/2 - Bullet.HEIGHT/2;
         tankFrame.bullets.add(new Bullet(bx,by,this.dir,tankFrame,this.group));
-        if(this.group == Group.GOOD) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();
+        if(this.group == Group.GOOD) new Thread(()->new Audio("audio/tank_fire.wav").play()).start();*/
     }
 
     /**
@@ -158,4 +162,15 @@ public class Tank {
         return rectangle;
     }
 
+    public Dir getDir() {
+        return dir;
+    }
+
+    public TankFrame getTankFrame() {
+        return tankFrame;
+    }
+
+    public FireStrategy getFireStrategy() {
+        return fireStrategy;
+    }
 }

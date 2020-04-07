@@ -1,6 +1,8 @@
 package com.yangzk.tank.v3.singleton;
 
 import java.io.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * 静态内部类写法
@@ -46,11 +48,14 @@ public class Mgr06 implements Serializable{
             new Thread(()-> System.out.println(Mgr06.getInstance().hashCode())).start();
         }*/
 
-       /* try {
+        try {
             Constructor<Mgr06> declaredConstructor = Mgr06.class.getDeclaredConstructor(null);
             declaredConstructor.setAccessible(true);
             Mgr06 mgr06 = declaredConstructor.newInstance();
             Mgr06 mgr061 = declaredConstructor.newInstance();
+            System.out.println("mgr06.hashCode():"+ mgr06.hashCode());
+            System.out.println("mgr061.hashCode():"+mgr061.hashCode());
+            System.out.println("反射实例化后的实例是不是同一个：");
             System.out.println(mgr06 == mgr061);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -60,8 +65,8 @@ public class Mgr06 implements Serializable{
             e.printStackTrace();
         } catch (InvocationTargetException e) {
             e.printStackTrace();
-        }*/
-        Mgr06 instance1 = Mgr06.getInstance();
+        }
+       /* Mgr06 instance1 = Mgr06.getInstance();
         Mgr06 instance2 = null;
         try {
             //序列化
@@ -88,7 +93,7 @@ public class Mgr06 implements Serializable{
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
     }

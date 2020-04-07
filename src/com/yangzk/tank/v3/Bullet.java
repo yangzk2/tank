@@ -32,6 +32,8 @@ public class Bullet {
         rectangle.y = this.y;
         rectangle.width = WIDTH;
         rectangle.height = HEIGHT;
+        //实例化时将子弹添加到bullets中
+        tankFrame.bullets.add(this);
     }
 
     /**
